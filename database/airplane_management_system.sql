@@ -1,0 +1,117 @@
+-- Create and use Database
+CREATE DATABASE IF NOT EXISTS airplane_management_system;
+USE airplane_management_system;
+
+-- Drop existing tables for a clean install
+DROP TABLE IF EXISTS payments;
+DROP TABLE IF EXISTS booking_seats;
+DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS seats;
+DROP TABLE IF EXISTS flights;
+DROP TABLE IF EXISTS airplanes;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS roles;
+
+-- Roles table
+CREATE TABLE roles (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  role_name VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- Users table
+CREATE TABLE users (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  phone VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(20) NOT NULL,
+  role_id INT NOT NULL,
+  created_at TIMESTAMP DEFEAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFEAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (ROLE_ID) REFERENCES roles(id)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
+
+-- Airplanes table
+CREATE TABLE airplanes (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  airplane_name VARCHAR(100) NOT NULL,
+  model VARCHAR(100) NOT NULL,
+  capacity INT NOT NULL,
+  status VARCHAR(30) DEFAULT 'Available',
+  created_at TIMESTAMO DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Flights table
+CREATE TABLE flights (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  airplane_id INT NOT NULL,
+  flight_number VARCHAR(50)NOT NULL UNIQUE,
+  departure_city VARCHAR(100) NOT NULL,
+  arrival_city VARCHAR(100) NOT NULL,
+  departure_time DATETIME NOT NULL,
+  arrival_time DATETIME NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  flight_status VARCHAR(30) DEFEAULT 'Scheduled',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (airplane_id) REFERENCES airplanes(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
+-- Seats table
+CREATE TABLE seats (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  airplane_id INT NOT NULL,
+  seat_number VARCHAR(10) NOT NULL,
+  seat_class VARCHAR(30) DEFAULT 'ECONOMY',
+  seat_status VARCHAR(30) DEFAULT 'Available',
+  FOREIGN KEY (airplane_id) REFERENCES airplanes(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
+-- Bookings table
+CREATE TABLE bookings (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  flight_id INT NOT NULL,
+  booking_date TIMESTAMO DEFAULT CURRENT_TIMESTAMP,
+  booking_status VARCHAR(30) DEFAULT 'Booked',
+  total_amount DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+  FOREIGN KEY (flight_id) REFERENCES flights(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
+-- Booking seats table
+CREATE TABLE booking_seats (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  booking_id INT NOT NULL,
+  seat_id INT NOT NULL,
+  FOREIGN KEY (booking_id) REFERENCES bookings(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+  FOREIGN KEY (seat_id) REFERENCES seats(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
+-- Payments table
+CREATE TABLE payments (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  booking_id INT NOT NULL,
+  payment_method VARCHAR(50) NOT NULL,
+  payment_status VARCHAR(30) DEFAULT 'Paid',
+  amount DECIMAL(10,2) NOT NULL,
+  payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (booking_id) REFERENCES bookings(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);

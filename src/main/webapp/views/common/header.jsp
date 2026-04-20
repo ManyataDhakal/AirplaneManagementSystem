@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<!--  Header -->
+<div class ="logo">
+  <h2>Airplane Management System</h2>
+</div>
 </body>
 </html>

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class Flight {
 	private int id;
-    private int airplaneId;
+    private int aeroplaneId;
     private String flightNumber;
     private String departureCity;
     private String arrivalCity;
@@ -19,11 +19,11 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(int id, int airplaneId, String flightNumber, String departureCity, String arrivalCity,
+    public Flight(int id, int aeroplaneId, String flightNumber, String departureCity, String arrivalCity,
                   Timestamp departureTime, Timestamp arrivalTime, BigDecimal price, String flightStatus,
                   Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
-        this.airplaneId = airplaneId;
+        this.aeroplaneId = aeroplaneId;
         this.flightNumber = flightNumber;
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
@@ -35,6 +35,7 @@ public class Flight {
         this.updatedAt = updatedAt;
     }
 
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -43,12 +44,12 @@ public class Flight {
         this.id = id;
     }
 
-    public int getAirplaneId() {
-        return airplaneId;
+    public int getAeroplaneId() {
+        return aeroplaneId;
     }
 
-    public void setAirplaneId(int airplaneId) {
-        this.airplaneId = airplaneId;
+    public void setAeroplaneId(int aeroplaneId) {
+        this.aeroplaneId = aeroplaneId;
     }
 
     public String getFlightNumber() {

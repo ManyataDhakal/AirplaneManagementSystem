@@ -8,25 +8,26 @@ public class User {
 	    private String email;
 	    private String phone;
 	    private String password;
-	    private int roleId;
+	    private String role; // Admin, Customer, Receptionist
 	    private Timestamp createdAt;
 	    private Timestamp updatedAt;
 
 	    public User() {
 	    }
 
-	    public User(int id, String fullName, String email, String phone, String password, int roleId,
+	    public User(int id, String fullName, String email, String phone, String password, String role,
 	                Timestamp createdAt, Timestamp updatedAt) {
 	        this.id = id;
 	        this.fullName = fullName;
 	        this.email = email;
 	        this.phone = phone;
 	        this.password = password;
-	        this.roleId = roleId;
+	        this.role = role;
 	        this.createdAt = createdAt;
 	        this.updatedAt = updatedAt;
 	    }
-
+	    
+	    // Getters and Setters
 	    public int getId() {
 	        return id;
 	    }
@@ -67,12 +68,12 @@ public class User {
 	        this.password = password;
 	    }
 
-	    public int getRoleId() {
-	        return roleId;
+	    public String getRole() {
+	        return role;
 	    }
 
-	    public void setRoleId(int roleId) {
-	        this.roleId = roleId;
+	    public void setRole(String role) {
+	        this.role = role;
 	    }
 
 	    public Timestamp getCreatedAt() {

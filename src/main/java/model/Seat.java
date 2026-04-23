@@ -2,7 +2,7 @@ package model;
 
 public class Seat {
 	private int id;
-    private int airplaneId;
+    private int flightId;
     private String seatNumber;
     private String seatClass;
     private String seatStatus;
@@ -10,14 +10,15 @@ public class Seat {
     public Seat() {
     }
 
-    public Seat(int id, int airplaneId, String seatNumber, String seatClass, String seatStatus) {
+    public Seat(int id, int flightId, String seatNumber, String seatClass, String seatStatus) {
         this.id = id;
-        this.airplaneId = airplaneId;
+        this.flightId = flightId;
         this.seatNumber = seatNumber;
         this.seatClass = seatClass;
         this.seatStatus = seatStatus;
     }
 
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -26,12 +27,12 @@ public class Seat {
         this.id = id;
     }
 
-    public int getAirplaneId() {
-        return airplaneId;
+    public int getFlightId() {
+        return flightId;
     }
 
-    public void setAirplaneId(int airplaneId) {
-        this.airplaneId = airplaneId;
+    public void setFlightId(int flightId) {
+        this.flightId = flightId;
     }
 
     public String getSeatNumber() {

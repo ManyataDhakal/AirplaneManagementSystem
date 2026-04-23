@@ -8,7 +8,7 @@ public class Booking {
 	    private int userId;
 	    private int flightId;
 	    private Timestamp bookingDate;
-	    private String bookingStatus;
+	    private String bookingStatus; // Reserved, Paid, Cancelled
 	    private BigDecimal totalAmount;
 
 	    public Booking() {
@@ -23,6 +23,7 @@ public class Booking {
 	        this.totalAmount = totalAmount;
 	    }
 
+	    // Getters and Setters
 	    public int getId() {
 	        return id;
 	    }

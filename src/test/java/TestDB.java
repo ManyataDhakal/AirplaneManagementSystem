@@ -1,6 +1,7 @@
-package util;
 
 import java.sql.Connection;
+
+import util.DBConfig;
 
 public class TestDB {
 	public static void main(String[] args) {
@@ -16,5 +17,4 @@ public class TestDB {
 			e.printStackTrace();
 		}
 	}
-
 }

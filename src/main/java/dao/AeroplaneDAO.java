@@ -159,7 +159,7 @@ public class AeroplaneDAO {
     }
 
 
-    // remove aeroplane by id
+    // DELETE: remove aeroplane by id
     public boolean deleteAeroplane(int id) {
 
         // SQL query to delete record

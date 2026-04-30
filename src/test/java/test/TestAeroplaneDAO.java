@@ -47,7 +47,6 @@ public class TestAeroplaneDAO {
             System.out.println("Not found");
         }
 
-
         // update only if records exists
         if (one != null) {
             one.setCapacity(120);

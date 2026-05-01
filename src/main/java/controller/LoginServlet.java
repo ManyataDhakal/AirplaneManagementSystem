@@ -43,19 +43,19 @@ public class LoginServlet extends HttpServlet {
 			
 			// Step 4: Redirect based on user role
 			if (user.getRole().equals("Admin")) {
-				response.sendRedirect(request.getContextPath() + "/admin/dashboard.jsp");
+				response.sendRedirect(request.getContextPath() + "/views/admin/dashboard.jsp");
 				
 			} else if (user.getRole().equals("Receptionist")) {
-				response.sendRedirect(request.getContextPath() + "/receptionist/dashboard.jsp");
+				response.sendRedirect(request.getContextPath() + "/views/receptionist/dashboard.jsp");
 				
 			} else {
-				response.sendRedirect(request.getContextPath() + "/customer/dashboard.jsp");
+				response.sendRedirect(request.getContextPath() + "/views/customer/dashboard.jsp");
 			}
 			
 		} else {
 			// Step 5: If login fails, show error message
 			request.setAttribute("error","Invalid email or password");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/auth/login.jsp").forward(request, response);
 		}
 	}
 	
@@ -67,6 +67,6 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	       throws ServletException, IOException {
 		
-		response.sendRedirect("login.jsp");
+		response.sendRedirect(request.getContextPath() + "/views/auth/login.jsp");
 	}
 }

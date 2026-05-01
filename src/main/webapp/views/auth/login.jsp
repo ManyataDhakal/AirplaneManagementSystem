@@ -1,12 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Login</title>
+        <link rel="icon" href="./resources/book.png" type="image/png" />
+        <link rel="stylesheet" href="./css/login_register.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">
+                <img
+                    src="./resources/book.png"
+                    alt="LL"
+                    style="width: 24px; height: 24px"
+                    />
+                <h2>Airplane Management System</h2>
+            </div>
+            
+            <!-- Login form -->
+            <form action="${pageContext.request.contextPath}/login" method="post">
+                <h2>Login</h2>
+                
+                <!-- Error message -->
+                <p style='margin:0px;color:red; display: ${not empty error ? "block" : "none"}'>${error}</p>
+                
+                <!--  -->
+                <input type="text" placeholder="Email" name="email" required />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    required
+                    />
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </body>
 </html>
+

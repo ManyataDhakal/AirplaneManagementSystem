@@ -43,7 +43,7 @@ public class SessionUtil {
 	 * @param request the request object from servlet
 	 * @param key the name of the value to remove
 	 */
-	public static void removeAttributes(HttpServletRequest request, String key) {
+	public static void removeAttribute(HttpServletRequest request, String key) {
 		HttpSession session = request.getSession(false);
 		
 		if(session != null) {
@@ -57,7 +57,7 @@ public class SessionUtil {
 	 * 
 	 * @param request the request object from servlet
 	 */
-	public static void invalidSession(HttpServletRequest request) {
+	public static void invalidateSession(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		
 		if (session != null) {

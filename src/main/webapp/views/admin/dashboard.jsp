@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1> Admin Dashboard</h1>
+<p>Login successful</p>
 
+<a href="${pageContext.request.contextPath}/logout">Logout</a>
 </body>
 </html>
